@@ -19,13 +19,13 @@ function LandingPage() {
     try {
       let response;
       if (activeTab === "loginAdmin") {
-        response = await axios.post("http://localhost:5000/api/login", {
+        response = await axios.post("https://shopsense-api.vercel.app/api/login", {
           email,
           password,
           role: "Admin",
         });
       } else if (activeTab === "loginUser") {
-        response = await axios.post("http://localhost:5000/api/login", {
+        response = await axios.post("https://shopsense-api.vercel.app/api/login", {
           email,
           password,
           role: "employee",
