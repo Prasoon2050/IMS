@@ -65,11 +65,14 @@ const EmployeeManagement = () => {
 
   const handleConfirmDelete = () => {
     axios
-      .delete(`http://localhost:5000/api/admin/employees/${itemToDelete}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .delete(
+        `https://shopsense-api.vercel.app/api/admin/employees/${itemToDelete}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then(() => {
         const updatedData = employeeData.filter(
           (employee) => employee.email !== itemToDelete
@@ -98,7 +101,7 @@ const EmployeeManagement = () => {
     console.log(updatedEmployee);
     axios
       .put(
-        `http://localhost:5000/api/admin/employees/${editEmployeeemail}`,
+        `https://shopsense-api.vercel.app/api/admin/employees/${editEmployeeemail}`,
         updatedEmployee,
         {
           headers: {
@@ -129,7 +132,7 @@ const EmployeeManagement = () => {
   };
   const fetchEmployeeData = () => {
     axios
-      .get("http://localhost:5000/api/admin/employees/names", {
+      .get("https://shopsense-api.vercel.app/api/admin/employees/names", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -144,7 +147,7 @@ const EmployeeManagement = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/employees/names", {
+      .get("https://shopsense-api.vercel.app/api/admin/employees/names", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -186,17 +189,16 @@ const EmployeeManagement = () => {
       )}
       {activeTab === "view" && (
         <div>
-        <div class="search-bar">
-              <i class="icon">🔍</i>
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
+          <div class="search-bar">
+            <i class="icon">🔍</i>
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
           <div className="employee-table-container">
-            
             <table className="employee-table">
               <thead>
                 <tr>

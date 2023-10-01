@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {
     // Fetch user profile data from the server when the component mounts
     axios
-      .get("http://localhost:5000/api/Admin/profile", {
+      .get("https://shopsense-api.vercel.app/api/Admin/profile", {
         headers: {
           Authorization: `Bearer ${token}`, // Include your authentication token here
         },
@@ -44,7 +44,7 @@ const Profile = () => {
   const handleConfirmCloseShop = () => {
     // Perform password check and make the API call here
     axios
-      .delete("http://localhost:5000/api/admin/delete", {
+      .delete("https://shopsense-api.vercel.app/api/admin/delete", {
         data: { password: password },
         headers: {
           Authorization: `Bearer ${token}`, // Include your authentication token here

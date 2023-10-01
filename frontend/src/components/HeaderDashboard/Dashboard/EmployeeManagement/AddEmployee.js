@@ -33,14 +33,17 @@ const AddEmployee = ({ onAddEmployeeSuccess }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/admin/employee", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newEmployeeData),
-      });
+      const response = await fetch(
+        "https://shopsense-api.vercel.app/api/admin/employee",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(newEmployeeData),
+        }
+      );
 
       const responseData = await response.json();
 

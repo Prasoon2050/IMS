@@ -9,25 +9,28 @@ const AddStock = ({ onStockUpdate }) => {
 
   const [stockInfo, setstockInfo] = useState();
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); 
+  const [messageType, setMessageType] = useState("");
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5000/api/admin/stock", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(data),
-      });
-  
+      const response = await fetch(
+        "https://shopsense-api.vercel.app/api/admin/stock",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
       if (response.ok) {
         const responseData = await response.json();
         setMessage(responseData.message);
         setMessageType("success");
         onStockUpdate();
-        reset(); 
+        reset();
       } else {
         const responseData = await response.json();
         setMessage(responseData.message);
