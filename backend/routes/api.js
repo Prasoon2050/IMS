@@ -120,7 +120,7 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign(
       { email: user.email, role }, // Include user ID and role in the token payload
       process.env.SECRET_KEY, // Replace with your actual secret key
-      { expiresIn: "1h" } // Token expiration time
+      { expiresIn: "24h" } // Token expiration time
     );
 
     res.status(200).json({ message: "Login successful", token });
